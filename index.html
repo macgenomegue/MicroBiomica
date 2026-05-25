@@ -326,6 +326,20 @@
     .output { display:grid; grid-template-columns:1fr auto; align-items:center; gap:1rem; }
 
     .gallery-grid { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1.1rem; }
+    .gallery-item {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      cursor: pointer;
+      border-radius: 20px;
+      border: 1px solid var(--line-grey);
+      transition: transform 0.2s ease-in-out;
+    }
+    .gallery-item:hover,
+    .gallery-item:focus-visible {
+      transform: scale(1.02);
+      outline: none;
+    }
     .gallery-placeholder {
       min-height:230px;
       border-radius:20px;
@@ -411,6 +425,9 @@
       position: absolute;
       top: 25px;
       right: 35px;
+      background: none;
+      border: none;
+      padding: 0;
       color: var(--white);
       font-size: 40px;
       font-weight: bold;
@@ -418,8 +435,10 @@
       line-height: 1;
       transition: color 0.2s;
     }
-    .lightbox-close:hover {
+    .lightbox-close:hover,
+    .lightbox-close:focus-visible {
       color: var(--bio-teal);
+      outline: none;
     }
 
   </style>
@@ -463,8 +482,8 @@
           </div>
         </div>
       </div>
-      <div class="support-strip" aria-label="Past and current funders and partners">
-        <p>Past and current funders / project partners</p>
+      <div class="support-strip" aria-label="Selected funders, collaborators and project partners">
+        <p>Selected funders, collaborators and project partners</p>
         <div class="logo-row">
           <div class="funder-logo">
             <img src="assets/logos/research_ireland-logo.jpg" alt="Research Ireland logo" loading="lazy">
@@ -547,8 +566,10 @@
             <p class="role">Principal Investigator</p>
             <h3>Dr Guerrino Macori</h3>
             <p class="thesis">Assistant Professor, UCD School of Biology and Environmental Science</p>
-            <p>Dr. Guerrino Macori is an Assistant Professor in Applied Bioinformatics at UCD and a Conway Fellow. His research group investigates the intersection of metagenomics, microbial ecology, and public health. The lab leverages next-generation sequencing and advanced computational workflows—including long-read technologies and metatranscriptomics—to address critical challenges across clinical, agricultural, and urban environments. Key research themes encompass the tracking of antimicrobial resistance, the promotion of sustainable urban food systems, and the genomic characterisation of pathogens within a One Health framework. Beyond technical innovation, Dr. Macori is a dedicated advocate for open scientific infrastructure, contributing to international consortiums like PHA4GE. His group is fundamentally committed to fostering an inclusive, progressive research culture, actively championing Equity, Diversity, and Inclusion in STEM and developing award-winning, open-source educational tools.</p>
-            <p class="outside"><strong>Outside the lab:</strong> Add a short, human profile line here.</p>
+            <p>Dr Guerrino Macori leads CLARITY LAB at UCD. He is an Assistant Professor in the UCD School of Biology and Environmental Science and a Conway Fellow, with additional affiliations to the UCD Centre for Food Safety and the UCD Institute of Food and Health.</p>
+            <p>His research examines microbial systems relevant to food safety, public health and One Health. The lab brings together food microbiology, microbial ecology, pathogen surveillance and applied bioinformatics to study how microbial communities are structured, how risks emerge and how biological evidence can be interpreted clearly.</p>
+            <p>Guerrino also teaches and supervises in areas related to applied bioinformatics, microbial genomics and microbiome analysis. His group provides a training environment for students and researchers working across experimental and computational microbiology.</p>
+            <p class="outside"><strong>Outside the lab:</strong> Profile details coming soon.</p>
           </article>
           <div class="cards two">
             <article class="card member">
@@ -557,7 +578,7 @@
               <h3>Mingwei Hong</h3>
               <p class="thesis">Computational Reconstruction of Synthetic Microbiomes for Predicting Pathogen Dynamics</p>
               <p>Mingwei explores synthetic microbiomes as controlled model systems for investigating microbial community dynamics and pathogen behaviour.</p>
-              <p class="outside"><strong>Outside the lab:</strong> Add interests, hobbies or a short personal note.</p>
+              <p class="outside"><strong>Outside the lab:</strong> Profile details coming soon.</p>
             </article>
             <article class="card member">
               <img class="portrait-photo" src="assets/people/Jacques.jpeg" alt="Portrait of Jacques Olivier" loading="lazy">
@@ -565,25 +586,25 @@
               <h3>Jacques Olivier</h3>
               <p class="thesis">AI-Enhanced Deciphering of Microbial Dark Matter</p>
               <p>Jacques investigates microbial dark matter to understand how functional traits, particularly antimicrobial resistance, disseminate through complex microbiomes.</p>
-              <p class="outside"><strong>Outside the lab:</strong> Add interests, hobbies or a short personal note.</p>
+              <p class="outside"><strong>Outside the lab:</strong> Profile details coming soon.</p>
             </article>
             <article class="card member">
               <img class="portrait-photo" src="assets/people/Atefeh.jpeg" alt="Portrait of Atefeh Asadi" loading="lazy">
               <p class="role">Visiting PhD Researcher</p>
               <p class="affiliation-line">Tallinn University of Technology, Estonia</p>
               <h3>Atefeh Asadi</h3>
-              <p class="thesis">Project title placeholder</p>
-              <p>Add a short description of Atefeh’s research focus.</p>
-              <p class="outside"><strong>Outside the lab:</strong> Add interests, hobbies or a short personal note.</p>
+              <p class="thesis">Project details coming soon.</p>
+              <p>Atefeh’s research profile will be added once details are confirmed.</p>
+              <p class="outside"><strong>Outside the lab:</strong> Profile details coming soon.</p>
             </article>
             <article class="card member">
               <img class="portrait-photo" src="assets/people/Sara.jpg" alt="Portrait of Sara Benetti" loading="lazy">
               <p class="role">Visiting PhD Researcher</p>
               <p class="affiliation-line">Università di Padova, Italy</p>
               <h3>Sara Benetti</h3>
-              <p class="thesis">Project title placeholder</p>
-              <p>Add a short description of Sara’s research focus.</p>
-              <p class="outside"><strong>Outside the lab:</strong> Add interests, hobbies or a short personal note.</p>
+              <p class="thesis">Project details coming soon.</p>
+              <p>Sara’s research profile will be added once details are confirmed.</p>
+              <p class="outside"><strong>Outside the lab:</strong> Profile details coming soon.</p>
             </article>
           </div>
         </div>
@@ -596,21 +617,11 @@
         <div>
           <p class="eyebrow">Alumni</p>
           <h2>Where lab training leads</h2>
-          <p class="lead">Use this section to show the career paths, research destinations and professional outcomes of former lab members. It gives prospective students and reviewers visual proof of training success without requiring frequent updates.</p>
+          <p class="lead">Alumni profiles are being compiled and will be added once confirmed. This section will highlight former CLARITY LAB members, their research contributions, former roles and next destinations.</p>
         </div>
-        <div class="card">
-          <div class="alumni-entry">
-            <h3>Alumni profile placeholder</h3>
-            <p><strong>Former role:</strong> PhD student / postdoctoral researcher / visiting researcher</p>
-            <p><strong>Now:</strong> Current role or destination placeholder</p>
-            <p><strong>Focus:</strong> Short summary of work completed in the lab.</p>
-          </div>
-          <div class="alumni-entry">
-            <h3>Alumni profile placeholder</h3>
-            <p><strong>Former role:</strong> Research assistant / MSc student / collaborator</p>
-            <p><strong>Now:</strong> Current role or destination placeholder</p>
-            <p><strong>Focus:</strong> Short summary of work completed in the lab.</p>
-          </div>
+        <div class="card" style="border-left: 5px solid var(--bio-teal); padding: 2rem;">
+          <h3 style="margin-top: 0; margin-bottom: 0.5rem;">Alumni profiles coming soon</h3>
+          <p style="margin: 0; color: var(--slate);">Details are currently being gathered and will be added once confirmed.</p>
         </div>
       </div>
     </section>
@@ -620,30 +631,11 @@
         <div class="intro">
           <p class="eyebrow">Selected Outputs</p>
           <h2>Curated publications and project outputs</h2>
-          <p class="lead">Keep this section selective. Add only representative outputs, and link to maintained external profiles for a complete publication record.</p>
+          <p class="lead">This section highlights selected publications, educational resources and research outputs from the lab. A small curated set will be added here, with links to maintained external profiles for a complete publication record.</p>
         </div>
-        <div class="output-list">
-          <article class="card output">
-            <div>
-              <h3>Selected output placeholder</h3>
-              <p>Add title, year, short significance note and DOI or project link.</p>
-            </div>
-            <a class="button secondary" href="#">Add link</a>
-          </article>
-          <article class="card output">
-            <div>
-              <h3>Selected output placeholder</h3>
-              <p>Add title, year, short significance note and DOI or project link.</p>
-            </div>
-            <a class="button secondary" href="#">Add link</a>
-          </article>
-          <article class="card output">
-            <div>
-              <h3>Selected output placeholder</h3>
-              <p>Add title, year, short significance note and DOI or project link.</p>
-            </div>
-            <a class="button secondary" href="#">Add link</a>
-          </article>
+        <div class="card" style="border-left: 5px solid var(--bio-teal); padding: 2rem;">
+          <h3 style="margin-top: 0; margin-bottom: 0.5rem;">Selected outputs coming soon</h3>
+          <p style="margin: 0; color: var(--slate);">A curated set of publications, research outputs and educational resources will be added here once the final spotlight selection is confirmed.</p>
         </div>
       </div>
     </section>
@@ -656,18 +648,18 @@
           <p class="lead">A snapshot of CLARITY LAB at UCD across research meetings, conferences, teaching, outreach, collaboration and everyday scientific work.</p>
         </div>
         <div class="gallery-grid">
-          <img src="assets/gallery/Geoffrey.jpeg" class="gallery-item" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; cursor: pointer; border-radius: 20px; border: 1px solid var(--line-grey); transition: transform 0.2s ease-in-out;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';" loading="lazy">
-          <img src="assets/gallery/guerrino_at_stellenbosch.jpeg" class="gallery-item" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; cursor: pointer; border-radius: 20px; border: 1px solid var(--line-grey); transition: transform 0.2s ease-in-out;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';" loading="lazy">
-          <img src="assets/gallery/guerrino_fems.jpeg" class="gallery-item" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; cursor: pointer; border-radius: 20px; border: 1px solid var(--line-grey); transition: transform 0.2s ease-in-out;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';" loading="lazy">
-          <img src="assets/gallery/guerrino_foodmicro.jpeg" class="gallery-item" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; cursor: pointer; border-radius: 20px; border: 1px solid var(--line-grey); transition: transform 0.2s ease-in-out;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';" loading="lazy">
-          <img src="assets/gallery/guerrino_outreach.jpg" class="gallery-item" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; cursor: pointer; border-radius: 20px; border: 1px solid var(--line-grey); transition: transform 0.2s ease-in-out;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';" loading="lazy">
-          <img src="assets/gallery/guerrino_sara.jpeg" class="gallery-item" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; cursor: pointer; border-radius: 20px; border: 1px solid var(--line-grey); transition: transform 0.2s ease-in-out;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';" loading="lazy">
-          <img src="assets/gallery/jacques_athlone_poster.jpg" class="gallery-item" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; cursor: pointer; border-radius: 20px; border: 1px solid var(--line-grey); transition: transform 0.2s ease-in-out;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';" loading="lazy">
-          <img src="assets/gallery/jacques_presenting.jpeg" class="gallery-item" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; cursor: pointer; border-radius: 20px; border: 1px solid var(--line-grey); transition: transform 0.2s ease-in-out;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';" loading="lazy">
-          <img src="assets/gallery/jacques_prize.jpeg" class="gallery-item" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; cursor: pointer; border-radius: 20px; border: 1px solid var(--line-grey); transition: transform 0.2s ease-in-out;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';" loading="lazy">
-          <img src="assets/gallery/mingwei_athlone_poster.jpg" class="gallery-item" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; cursor: pointer; border-radius: 20px; border: 1px solid var(--line-grey); transition: transform 0.2s ease-in-out;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';" loading="lazy">
-          <img src="assets/gallery/ucd_collegues.jpeg" class="gallery-item" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; cursor: pointer; border-radius: 20px; border: 1px solid var(--line-grey); transition: transform 0.2s ease-in-out;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';" loading="lazy">
-          <img src="assets/gallery/unconventional_lab_photo.png" class="gallery-item" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; cursor: pointer; border-radius: 20px; border: 1px solid var(--line-grey); transition: transform 0.2s ease-in-out;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';" loading="lazy">
+          <img src="assets/gallery/Geoffrey.jpeg" class="gallery-item" loading="lazy" alt="AI image of Guerrino's dog, Geoffrey, working in the laboratory">
+          <img src="assets/gallery/guerrino_at_stellenbosch.jpeg" class="gallery-item" loading="lazy" alt="Dr Guerrino Macori presenting at Stellenbosch University">
+          <img src="assets/gallery/guerrino_fems.jpeg" class="gallery-item" loading="lazy" alt="Dr Guerrino Macori attending the FEMS conference">
+          <img src="assets/gallery/guerrino_foodmicro.jpeg" class="gallery-item" loading="lazy" alt="Dr Guerrino Macori presenting at the FoodMicro conference">
+          <img src="assets/gallery/guerrino_outreach.jpg" class="gallery-item" loading="lazy" alt="Dr Guerrino Macori delivering a scientific outreach presentation">
+          <img src="assets/gallery/guerrino_sara.jpeg" class="gallery-item" loading="lazy" alt="Dr Guerrino Macori and Sara Benetti in the lab environment">
+          <img src="assets/gallery/jacques_athlone_poster.jpg" class="gallery-item" loading="lazy" alt="Jacques Olivier presenting his research poster at Microbiology Society Ireland conference">
+          <img src="assets/gallery/jacques_presenting.jpeg" class="gallery-item" loading="lazy" alt="Jacques Olivier giving a presentation on microbial systems">
+          <img src="assets/gallery/jacques_prize.jpeg" class="gallery-item" loading="lazy" alt="Jacques Olivier receiving a research excellence prize">
+          <img src="assets/gallery/mingwei_athlone_poster.jpg" class="gallery-item" loading="lazy" alt="Mingwei Hong presenting her research poster at Microbiology Society Ireland conference">
+          <img src="assets/gallery/ucd_collegues.jpeg" class="gallery-item" loading="lazy" alt="Dr Guerrino Macori and research colleagues at University College Dublin">
+          <img src="assets/gallery/unconventional_lab_photo.png" class="gallery-item" loading="lazy" alt="CLARITY LAB team group photo in the laboratory">
         </div>
       </div>
     </section>
@@ -721,8 +713,8 @@
 
   <!-- Lightbox -->
   <div id="gallery-lightbox" class="lightbox">
-    <span class="lightbox-close" id="lightbox-close">&times;</span>
-    <img class="lightbox-content" id="lightbox-img">
+    <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close image preview">&times;</button>
+    <img class="lightbox-content" id="lightbox-img" alt="">
   </div>
 
   <script>
@@ -736,6 +728,7 @@
       galleryImages.forEach(img => {
         img.addEventListener("click", () => {
           lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt || "";
           lightbox.classList.add("show");
         });
       });
