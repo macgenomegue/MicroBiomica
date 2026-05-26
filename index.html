@@ -1,331 +1,687 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CLARITY LAB at UCD</title>
-  <meta name="description" content="CLARITY LAB at UCD integrates microbiology, multi-omics and applied bioinformatics to make microbial systems visible, testable and traceable." />
+  <meta name="description"
+    content="CLARITY LAB at UCD integrates microbiology, multi-omics and applied bioinformatics to make microbial systems visible, testable and traceable." />
   <style>
     :root {
-      --white:#FFFFFF;
-      --lab-mist:#F4FAF8;
-      --bio-teal:#007C7A;
-      --deep-marine:#123C43;
-      --culture-green:#79B76D;
-      --ferment-gold:#F2B84B;
-      --coral:#EF6F61;
-      --genome-blue:#4C8FD8;
-      --soft-lilac:#B9A7E8;
-      --ink:#18292E;
-      --slate:#50676E;
-      --line-grey:#DDE8E6;
-      --pale-grey:#F7F9F9;
-      --radius:18px;
-      --shadow:0 10px 28px rgba(18,60,67,.08);
-      --max:1180px;
+      --white: #FFFFFF;
+      --lab-mist: #F4FAF8;
+      --bio-teal: #007C7A;
+      --deep-marine: #123C43;
+      --culture-green: #79B76D;
+      --ferment-gold: #F2B84B;
+      --coral: #EF6F61;
+      --genome-blue: #4C8FD8;
+      --soft-lilac: #B9A7E8;
+      --ink: #18292E;
+      --slate: #50676E;
+      --line-grey: #DDE8E6;
+      --pale-grey: #F7F9F9;
+      --radius: 18px;
+      --shadow: 0 10px 28px rgba(18, 60, 67, .08);
+      --max: 1180px;
     }
 
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body {
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color:var(--ink);
-      background:var(--white);
-      font-size:17px;
-      line-height:1.65;
+    * {
+      box-sizing: border-box;
     }
-    a { color:inherit; }
-    img { max-width:100%; display:block; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
     .skip {
-      position:absolute;
-      left:-999px;
-      top:12px;
-      z-index:999;
-      background:var(--white);
-      color:var(--deep-marine);
-      padding:.75rem 1rem;
-      border:2px solid var(--bio-teal);
-      border-radius:10px;
+      position: absolute;
+      left: -999px;
+      top: 12px;
+      z-index: 999;
+      background: var(--white);
+      color: var(--deep-marine);
+      padding: .75rem 1rem;
+      border: 2px solid var(--bio-teal);
+      border-radius: 10px;
     }
-    .skip:focus { left:12px; }
+
+    .skip:focus {
+      left: 12px;
+    }
 
     .site-header {
-      position:sticky;
-      top:0;
-      z-index:50;
-      background:rgba(255,255,255,.94);
-      border-bottom:1px solid var(--line-grey);
-      backdrop-filter:blur(12px);
-    }
-    .header-inner {
-      max-width:var(--max);
-      margin:0 auto;
-      padding:1rem 1.25rem;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:1rem;
-    }
-    .logo-link {
-      display:inline-flex;
-      align-items:center;
-      text-decoration:none;
-      border-radius:12px;
-      outline-offset:4px;
-    }
-    .logo { width:260px; max-width:52vw; height:auto; }
-    .nav { display:flex; align-items:center; gap:.25rem; }
-    .nav a {
-      padding:.55rem .75rem;
-      color:var(--deep-marine);
-      text-decoration:none;
-      font-size:.94rem;
-      font-weight:650;
-      border-radius:10px;
-      text-underline-offset:4px;
-    }
-    .nav a:hover, .nav a:focus-visible {
-      background:var(--lab-mist);
-      outline:none;
-      text-decoration:underline;
-      text-decoration-color:var(--bio-teal);
-    }
-    .menu-button {
-      display:none;
-      border:1px solid var(--line-grey);
-      background:var(--white);
-      color:var(--deep-marine);
-      border-radius:12px;
-      padding:.55rem .7rem;
-      font-weight:700;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, .94);
+      border-bottom: 1px solid var(--line-grey);
+      backdrop-filter: blur(12px);
     }
 
-    main { overflow:hidden; }
-    section { scroll-margin-top:92px; }
-    .section { padding:5rem 1.25rem; }
-    .section.alt { background:var(--lab-mist); }
-    .section.pale { background:var(--pale-grey); }
-    .container { max-width:var(--max); margin:0 auto; }
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo-link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      border-radius: 12px;
+      outline-offset: 4px;
+    }
+
+    .logo {
+      width: 260px;
+      max-width: 52vw;
+      height: auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: .25rem;
+    }
+
+    .nav a {
+      padding: .55rem .75rem;
+      color: var(--deep-marine);
+      text-decoration: none;
+      font-size: .94rem;
+      font-weight: 650;
+      border-radius: 10px;
+      text-underline-offset: 4px;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      background: var(--lab-mist);
+      outline: none;
+      text-decoration: underline;
+      text-decoration-color: var(--bio-teal);
+    }
+
+    .menu-button {
+      display: none;
+      border: 1px solid var(--line-grey);
+      background: var(--white);
+      color: var(--deep-marine);
+      border-radius: 12px;
+      padding: .55rem .7rem;
+      font-weight: 700;
+    }
+
+    main {
+      overflow: hidden;
+    }
+
+    section {
+      scroll-margin-top: 92px;
+    }
+
+    .section {
+      padding: 5rem 1.25rem;
+    }
+
+    .section.alt {
+      background: var(--lab-mist);
+    }
+
+    .section.pale {
+      background: var(--pale-grey);
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
 
     .hero {
       background:
-        radial-gradient(circle at 12% 20%, rgba(121,183,109,.18), transparent 28rem),
-        radial-gradient(circle at 90% 12%, rgba(76,143,216,.15), transparent 30rem),
+        radial-gradient(circle at 12% 20%, rgba(121, 183, 109, .18), transparent 28rem),
+        radial-gradient(circle at 90% 12%, rgba(76, 143, 216, .15), transparent 30rem),
         var(--lab-mist);
-      padding:5rem 1.25rem 3.5rem;
+      padding: 5rem 1.25rem 3.5rem;
     }
+
     .hero-grid {
-      max-width:var(--max);
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      align-items:center;
-      gap:3rem;
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 3rem;
     }
+
     .eyebrow {
-      margin:0 0 1rem;
-      color:var(--bio-teal);
-      font-size:.86rem;
-      font-weight:800;
-      letter-spacing:.13em;
-      text-transform:uppercase;
+      margin: 0 0 1rem;
+      color: var(--bio-teal);
+      font-size: .86rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
     }
-    h1, h2, h3 { color:var(--deep-marine); line-height:1.12; margin:0; letter-spacing:-.035em; }
-    h1 { font-size:clamp(2.5rem, 6vw, 4.6rem); max-width:900px; }
-    h2 { font-size:clamp(2rem, 4vw, 3rem); }
-    h3 { font-size:1.35rem; }
-    .lead { font-size:1.13rem; line-height:1.75; color:var(--ink); max-width:760px; }
-    .hero .lead { margin:1.35rem 0 1.75rem; }
-    .buttons { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.65rem; }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--deep-marine);
+      line-height: 1.12;
+      margin: 0;
+      letter-spacing: -.035em;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.6rem);
+      max-width: 900px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    h3 {
+      font-size: 1.35rem;
+    }
+
+    .lead {
+      font-size: 1.13rem;
+      line-height: 1.75;
+      color: var(--ink);
+      max-width: 760px;
+    }
+
+    .hero .lead {
+      margin: 1.35rem 0 1.75rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+      margin-top: 1.65rem;
+    }
+
     .button {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:.5rem;
-      min-height:46px;
-      padding:.76rem 1.05rem;
-      border-radius:12px;
-      font-weight:750;
-      text-decoration:none;
-      border:2px solid transparent;
-      transition:.18s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      min-height: 46px;
+      padding: .76rem 1.05rem;
+      border-radius: 12px;
+      font-weight: 750;
+      text-decoration: none;
+      border: 2px solid transparent;
+      transition: .18s ease;
     }
-    .button.primary { background:var(--bio-teal); color:var(--white); }
-    .button.primary:hover { background:#006866; }
-    .button.secondary { color:var(--deep-marine); border-color:var(--bio-teal); background:var(--white); }
-    .button.secondary:hover { background:var(--lab-mist); }
-    .button.subtle { color:var(--deep-marine); background:transparent; text-decoration:underline; text-decoration-color:rgba(0,124,122,.35); text-underline-offset:5px; }
-    .button:focus-visible { outline:4px solid rgba(76,143,216,.38); outline-offset:3px; }
+
+    .button.primary {
+      background: var(--bio-teal);
+      color: var(--white);
+    }
+
+    .button.primary:hover {
+      background: #006866;
+    }
+
+    .button.secondary {
+      color: var(--deep-marine);
+      border-color: var(--bio-teal);
+      background: var(--white);
+    }
+
+    .button.secondary:hover {
+      background: var(--lab-mist);
+    }
+
+    .button.subtle {
+      color: var(--deep-marine);
+      background: transparent;
+      text-decoration: underline;
+      text-decoration-color: rgba(0, 124, 122, .35);
+      text-underline-offset: 5px;
+    }
+
+    .button:focus-visible {
+      outline: 4px solid rgba(76, 143, 216, .38);
+      outline-offset: 3px;
+    }
 
     .hero-card {
-      background:rgba(255,255,255,.84);
-      border:1px solid var(--line-grey);
-      border-radius:28px;
-      padding:1.2rem;
-      box-shadow:var(--shadow);
+      background: rgba(255, 255, 255, .84);
+      border: 1px solid var(--line-grey);
+      border-radius: 28px;
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
     }
+
     .placeholder-diagram {
-      min-height:330px;
-      border-radius:22px;
-      border:1px dashed var(--line-grey);
-      background:linear-gradient(135deg, rgba(244,250,248,.9), rgba(255,255,255,.96));
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:2rem;
-      color:var(--slate);
+      min-height: 330px;
+      border-radius: 22px;
+      border: 1px dashed var(--line-grey);
+      background: linear-gradient(135deg, rgba(244, 250, 248, .9), rgba(255, 255, 255, .96));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--slate);
     }
-    .placeholder-diagram.large { min-height:390px; }
-    .placeholder-title { margin:.8rem 0 .2rem; color:var(--deep-marine); font-size:1.15rem; font-weight:800; }
-    .placeholder-copy { margin:0; max-width:28rem; color:var(--slate); }
-    .diagram-dots { position:relative; width:220px; height:130px; }
+
+    .placeholder-diagram.large {
+      min-height: 390px;
+    }
+
+    .placeholder-title {
+      margin: .8rem 0 .2rem;
+      color: var(--deep-marine);
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .placeholder-copy {
+      margin: 0;
+      max-width: 28rem;
+      color: var(--slate);
+    }
+
+    .diagram-dots {
+      position: relative;
+      width: 220px;
+      height: 130px;
+    }
+
     .diagram-dots::before {
-      content:"";
-      position:absolute;
-      left:20px;
-      right:20px;
-      top:65px;
-      border-top:3px dashed var(--line-grey);
-      transform:rotate(-8deg);
+      content: "";
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      top: 65px;
+      border-top: 3px dashed var(--line-grey);
+      transform: rotate(-8deg);
     }
-    .diagram-dots span { position:absolute; display:block; border-radius:999px; opacity:.82; }
-    .diagram-dots span:nth-child(1){width:64px;height:64px;left:8px;top:20px;background:#4C8FD8;}
-    .diagram-dots span:nth-child(2){width:42px;height:42px;left:78px;top:2px;background:#007C7A;}
-    .diagram-dots span:nth-child(3){width:56px;height:56px;left:92px;top:72px;background:#79B76D;}
-    .diagram-dots span:nth-child(4){width:46px;height:46px;left:158px;top:28px;background:#F2B84B;}
-    .diagram-dots span:nth-child(5){width:26px;height:26px;left:53px;top:86px;background:#50676E;}
+
+    .diagram-dots span {
+      position: absolute;
+      display: block;
+      border-radius: 999px;
+      opacity: .82;
+    }
+
+    .diagram-dots span:nth-child(1) {
+      width: 64px;
+      height: 64px;
+      left: 8px;
+      top: 20px;
+      background: #4C8FD8;
+    }
+
+    .diagram-dots span:nth-child(2) {
+      width: 42px;
+      height: 42px;
+      left: 78px;
+      top: 2px;
+      background: #007C7A;
+    }
+
+    .diagram-dots span:nth-child(3) {
+      width: 56px;
+      height: 56px;
+      left: 92px;
+      top: 72px;
+      background: #79B76D;
+    }
+
+    .diagram-dots span:nth-child(4) {
+      width: 46px;
+      height: 46px;
+      left: 158px;
+      top: 28px;
+      background: #F2B84B;
+    }
+
+    .diagram-dots span:nth-child(5) {
+      width: 26px;
+      height: 26px;
+      left: 53px;
+      top: 86px;
+      background: #50676E;
+    }
 
     .support-strip {
-      max-width:var(--max);
-      margin:3rem auto 0;
-      background:rgba(255,255,255,.78);
-      border:1px solid var(--line-grey);
-      border-radius:22px;
-      padding:1.2rem;
+      max-width: var(--max);
+      margin: 3rem auto 0;
+      background: rgba(255, 255, 255, .78);
+      border: 1px solid var(--line-grey);
+      border-radius: 22px;
+      padding: 1.2rem;
     }
-    .support-strip p { margin:.1rem 0 1rem; color:var(--slate); font-size:.95rem; font-weight:700; text-align:center; }
-    .logo-row { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:.8rem; }
+
+    .support-strip p {
+      margin: .1rem 0 1rem;
+      color: var(--slate);
+      font-size: .95rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .logo-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .8rem;
+    }
+
     .funder-logo {
-      min-height:80px;
-      border:1px solid var(--line-grey);
-      border-radius:16px;
-      background:var(--white);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:.5rem 1rem;
-      transition:all .3s cubic-bezier(.4, 0, .2, 1);
-      box-shadow:0 2px 8px rgba(18,60,67,.02);
+      min-height: 80px;
+      border: 1px solid var(--line-grey);
+      border-radius: 16px;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: .5rem 1rem;
+      transition: all .3s cubic-bezier(.4, 0, .2, 1);
+      box-shadow: 0 2px 8px rgba(18, 60, 67, .02);
     }
+
     .funder-logo:hover {
-      border-color:var(--bio-teal);
-      transform:translateY(-2px);
-      box-shadow:0 8px 20px rgba(18,60,67,.06);
+      border-color: var(--bio-teal);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(18, 60, 67, .06);
     }
+
     .funder-logo img {
-      max-height:48px;
-      max-width:100%;
-      object-fit:contain;
-      filter:grayscale(100%);
-      opacity:.75;
-      transition:all .3s cubic-bezier(.4, 0, .2, 1);
+      max-height: 48px;
+      max-width: 100%;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: .75;
+      transition: all .3s cubic-bezier(.4, 0, .2, 1);
     }
+
     .funder-logo:hover img {
-      filter:grayscale(0%);
-      opacity:1;
+      filter: grayscale(0%);
+      opacity: 1;
     }
 
-    .intro { max-width:780px; margin:0 auto 3rem; text-align:center; }
-    .intro .lead { margin:1rem auto 0; color:var(--slate); }
-    .cards { display:grid; gap:1.1rem; }
-    .cards.two { grid-template-columns:repeat(2, minmax(0,1fr)); }
-    .cards.three { grid-template-columns:repeat(3, minmax(0,1fr)); }
-    .cards.four { grid-template-columns:repeat(4, minmax(0,1fr)); }
-    .card { background:var(--white); border:1px solid var(--line-grey); border-radius:var(--radius); padding:1.4rem; box-shadow:0 1px 0 rgba(18,60,67,.03); }
-    .card strong { color:var(--deep-marine); }
-    .pillar { position:relative; overflow:hidden; padding-top:1.75rem; }
-    .pillar::before { content:""; position:absolute; inset:0 0 auto 0; height:6px; background:var(--accent, var(--bio-teal)); }
+    .intro {
+      max-width: 780px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+
+    .intro .lead {
+      margin: 1rem auto 0;
+      color: var(--slate);
+    }
+
+    .cards {
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .cards.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cards.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .cards.four {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line-grey);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      box-shadow: 0 1px 0 rgba(18, 60, 67, .03);
+    }
+
+    .card strong {
+      color: var(--deep-marine);
+    }
+
+    .pillar {
+      position: relative;
+      overflow: hidden;
+      padding-top: 1.75rem;
+    }
+
+    .pillar::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 6px;
+      background: var(--accent, var(--bio-teal));
+    }
+
     .icon {
-      width:48px;
-      height:48px;
-      border-radius:16px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin-bottom:1rem;
-      background:color-mix(in srgb, var(--accent, var(--bio-teal)) 16%, white);
-      color:var(--accent, var(--bio-teal));
-      font-weight:900;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      background: color-mix(in srgb, var(--accent, var(--bio-teal)) 16%, white);
+      color: var(--accent, var(--bio-teal));
+      font-weight: 900;
     }
-    .repo-links { margin-top:1rem; padding-top:.9rem; border-top:1px solid var(--line-grey); }
-    .repo-links p { margin:.15rem 0 .55rem; color:var(--deep-marine); font-weight:800; font-size:.95rem; }
+
+    .repo-links {
+      margin-top: 1rem;
+      padding-top: .9rem;
+      border-top: 1px solid var(--line-grey);
+    }
+
+    .repo-links p {
+      margin: .15rem 0 .55rem;
+      color: var(--deep-marine);
+      font-weight: 800;
+      font-size: .95rem;
+    }
+
     .repo-links a {
-      display:block;
-      margin:.35rem 0;
-      color:var(--deep-marine);
-      text-decoration:underline;
-      text-decoration-color:rgba(0,124,122,.38);
-      text-underline-offset:4px;
-      font-weight:650;
-      font-size:.95rem;
+      display: block;
+      margin: .35rem 0;
+      color: var(--deep-marine);
+      text-decoration: underline;
+      text-decoration-color: rgba(0, 124, 122, .38);
+      text-underline-offset: 4px;
+      font-weight: 650;
+      font-size: .95rem;
     }
 
-    .explainer { display:grid; grid-template-columns:.95fr 1.05fr; gap:2rem; align-items:center; }
-    .workflow { background:var(--white); border:1px solid var(--line-grey); border-radius:28px; padding:1rem; box-shadow:var(--shadow); }
-    .diagram-flow { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:1rem; margin-bottom:.6rem; }
-    .diagram-flow span { min-width:9rem; border:1px solid var(--line-grey); border-radius:16px; background:var(--white); padding:1rem 1.1rem; color:var(--deep-marine); font-weight:800; }
-    .diagram-flow b { display:block; width:54px; height:3px; background:var(--line-grey); }
+    .explainer {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 2rem;
+      align-items: center;
+    }
 
-    .people-grid { display:grid; grid-template-columns:.88fr 1.12fr; gap:1.3rem; align-items:start; }
-    .pi-card { background:var(--pale-grey); }
+    .workflow {
+      background: var(--white);
+      border: 1px solid var(--line-grey);
+      border-radius: 28px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .diagram-flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: .6rem;
+    }
+
+    .diagram-flow span {
+      min-width: 9rem;
+      border: 1px solid var(--line-grey);
+      border-radius: 16px;
+      background: var(--white);
+      padding: 1rem 1.1rem;
+      color: var(--deep-marine);
+      font-weight: 800;
+    }
+
+    .diagram-flow b {
+      display: block;
+      width: 54px;
+      height: 3px;
+      background: var(--line-grey);
+    }
+
+    .people-grid {
+      display: grid;
+      grid-template-columns: .88fr 1.12fr;
+      gap: 1.3rem;
+      align-items: start;
+    }
+
+    .pi-card {
+      background: var(--pale-grey);
+    }
+
     .portrait-placeholder {
-      height:230px;
-      border-radius:20px;
-      border:1px solid var(--line-grey);
+      height: 230px;
+      border-radius: 20px;
+      border: 1px solid var(--line-grey);
       background:
-        radial-gradient(circle at 34% 34%, rgba(185,167,232,.25), transparent 6rem),
-        radial-gradient(circle at 70% 62%, rgba(0,124,122,.18), transparent 7rem),
+        radial-gradient(circle at 34% 34%, rgba(185, 167, 232, .25), transparent 6rem),
+        radial-gradient(circle at 70% 62%, rgba(0, 124, 122, .18), transparent 7rem),
         var(--lab-mist);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--slate);
-      font-weight:700;
-      text-align:center;
-      padding:1rem;
-      margin-bottom:.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--slate);
+      font-weight: 700;
+      text-align: center;
+      padding: 1rem;
+      margin-bottom: .9rem;
     }
 
     .portrait-photo {
-      width:100%;
-      height:230px;
-      object-fit:cover;
-      object-position:center;
-      border-radius:20px;
-      border:1px solid var(--line-grey);
-      display:block;
-      margin-bottom:.9rem;
-      background:var(--lab-mist);
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 20px;
+      border: 1px solid var(--line-grey);
+      display: block;
+      margin-bottom: .9rem;
+      background: var(--lab-mist);
     }
-    .member { display:grid; gap:.45rem; align-content:start; }
-    .member .role { margin:0; color:var(--bio-teal); font-weight:800; font-size:.95rem; }
-    .member .thesis { margin:.15rem 0 0; font-weight:760; color:var(--deep-marine); }
-    .member .outside { margin:.35rem 0 0; padding:.75rem .85rem; border-radius:12px; background:var(--lab-mist); color:var(--slate); font-size:.95rem; }
-    .notice { border-left:5px solid var(--bio-teal); background:var(--lab-mist); padding:1rem 1.1rem; border-radius:12px; color:var(--ink); }
 
-    .alumni-card { display:grid; grid-template-columns:1fr 1fr; gap:1rem; align-items:start; }
-    .alumni-entry { border-top:1px solid var(--line-grey); padding-top:1rem; margin-top:1rem; }
-    .alumni-entry:first-child { border-top:0; padding-top:0; margin-top:0; }
-    .alumni-entry p { margin:.2rem 0; color:var(--slate); }
+    .member {
+      display: grid;
+      gap: .45rem;
+      align-content: start;
+    }
 
-    .output-list { display:grid; gap:1rem; }
-    .output { display:grid; grid-template-columns:1fr auto; align-items:center; gap:1rem; }
+    .member .role {
+      margin: 0;
+      color: var(--bio-teal);
+      font-weight: 800;
+      font-size: .95rem;
+    }
 
-    .gallery-grid { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1.1rem; }
+    .member .thesis {
+      margin: .15rem 0 0;
+      font-weight: 760;
+      color: var(--deep-marine);
+    }
+
+    .member .outside {
+      margin: .35rem 0 0;
+      padding: .75rem .85rem;
+      border-radius: 12px;
+      background: var(--lab-mist);
+      color: var(--slate);
+      font-size: .95rem;
+    }
+
+    .notice {
+      border-left: 5px solid var(--bio-teal);
+      background: var(--lab-mist);
+      padding: 1rem 1.1rem;
+      border-radius: 12px;
+      color: var(--ink);
+    }
+
+    .alumni-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .alumni-entry {
+      border-top: 1px solid var(--line-grey);
+      padding-top: 1rem;
+      margin-top: 1rem;
+    }
+
+    .alumni-entry:first-child {
+      border-top: 0;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .alumni-entry p {
+      margin: .2rem 0;
+      color: var(--slate);
+    }
+
+    .output-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .output {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+    }
+
     .gallery-item {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -335,63 +691,159 @@
       border: 1px solid var(--line-grey);
       transition: transform 0.2s ease-in-out;
     }
+
     .gallery-item:hover,
     .gallery-item:focus-visible {
       transform: scale(1.02);
       outline: none;
     }
+
     .gallery-placeholder {
-      min-height:230px;
-      border-radius:20px;
-      border:1px dashed var(--line-grey);
-      background:linear-gradient(135deg, var(--lab-mist), var(--white));
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:1.25rem;
-      color:var(--slate);
-      font-weight:700;
+      min-height: 230px;
+      border-radius: 20px;
+      border: 1px dashed var(--line-grey);
+      background: linear-gradient(135deg, var(--lab-mist), var(--white));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1.25rem;
+      color: var(--slate);
+      font-weight: 700;
     }
 
-    .footer { background:var(--deep-marine); color:var(--white); padding:4rem 1.25rem 2rem; }
-    .footer-grid { max-width:var(--max); margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; }
-    .footer a { color:var(--white); text-decoration:underline; text-decoration-color:rgba(255,255,255,.35); text-underline-offset:4px; }
-    .footer p, .footer li { color:rgba(244,250,248,.82); }
-    .footer-logo { width:320px; max-width:100%; background:#fff; border-radius:16px; padding:.7rem; display:block; margin-bottom:1rem; }
-    .footer-bottom { max-width:var(--max); margin:2.5rem auto 0; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,.18); display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; color:rgba(244,250,248,.78); font-size:.9rem; }
+    .footer {
+      background: var(--deep-marine);
+      color: var(--white);
+      padding: 4rem 1.25rem 2rem;
+    }
+
+    .footer-grid {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .footer a {
+      color: var(--white);
+      text-decoration: underline;
+      text-decoration-color: rgba(255, 255, 255, .35);
+      text-underline-offset: 4px;
+    }
+
+    .footer p,
+    .footer li {
+      color: rgba(244, 250, 248, .82);
+    }
+
+    .footer-logo {
+      width: 320px;
+      max-width: 100%;
+      background: #fff;
+      border-radius: 16px;
+      padding: .7rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .footer-bottom {
+      max-width: var(--max);
+      margin: 2.5rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, .18);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: rgba(244, 250, 248, .78);
+      font-size: .9rem;
+    }
 
     @media (max-width:980px) {
-      .hero-grid, .explainer, .people-grid, .footer-grid, .alumni-card { grid-template-columns:1fr; }
-      .cards.three, .cards.four, .gallery-grid { grid-template-columns:repeat(2, minmax(0,1fr)); }
-      .hero-card { order:-1; }
-      .logo-row { grid-template-columns:repeat(2, minmax(0,1fr)); }
-    }
-    @media (max-width:780px) {
-      .header-inner { align-items:flex-start; }
-      .menu-button { display:inline-flex; }
-      .nav {
-        display:none;
-        position:absolute;
-        left:1rem;
-        right:1rem;
-        top:76px;
-        padding:.75rem;
-        flex-direction:column;
-        align-items:stretch;
-        background:var(--white);
-        border:1px solid var(--line-grey);
-        border-radius:16px;
-        box-shadow:var(--shadow);
+
+      .hero-grid,
+      .explainer,
+      .people-grid,
+      .footer-grid,
+      .alumni-card {
+        grid-template-columns: 1fr;
       }
-      .nav.open { display:flex; }
-      .nav a { padding:.8rem; }
-      .cards.two, .cards.three, .cards.four, .gallery-grid { grid-template-columns:1fr; }
-      .section { padding:3.75rem 1rem; }
-      .hero { padding:3.25rem 1rem; }
-      .output { grid-template-columns:1fr; }
-      .logo { width:210px; }
-      .logo-row { grid-template-columns:1fr; }
+
+      .cards.three,
+      .cards.four,
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .logo-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width:780px) {
+      .header-inner {
+        align-items: flex-start;
+      }
+
+      .menu-button {
+        display: inline-flex;
+      }
+
+      .nav {
+        display: none;
+        position: absolute;
+        left: 1rem;
+        right: 1rem;
+        top: 76px;
+        padding: .75rem;
+        flex-direction: column;
+        align-items: stretch;
+        background: var(--white);
+        border: 1px solid var(--line-grey);
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+      }
+
+      .nav.open {
+        display: flex;
+      }
+
+      .nav a {
+        padding: .8rem;
+      }
+
+      .cards.two,
+      .cards.three,
+      .cards.four,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 3.75rem 1rem;
+      }
+
+      .hero {
+        padding: 3.25rem 1rem;
+      }
+
+      .output {
+        grid-template-columns: 1fr;
+      }
+
+      .logo {
+        width: 210px;
+      }
+
+      .logo-row {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Lightbox Styles */
@@ -410,17 +862,20 @@
       opacity: 0;
       transition: opacity 0.3s ease;
     }
+
     .lightbox.show {
       display: flex;
       opacity: 1;
     }
+
     .lightbox-content {
       max-width: 90%;
       max-height: 90vh;
       border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
       object-fit: contain;
     }
+
     .lightbox-close {
       position: absolute;
       top: 25px;
@@ -435,14 +890,15 @@
       line-height: 1;
       transition: color 0.2s;
     }
+
     .lightbox-close:hover,
     .lightbox-close:focus-visible {
       color: var(--bio-teal);
       outline: none;
     }
-
   </style>
 </head>
+
 <body>
   <a class="skip" href="#main">Skip to main content</a>
   <header class="site-header">
@@ -450,7 +906,8 @@
       <a class="logo-link" href="#home" aria-label="CLARITY LAB at UCD home">
         <img class="logo" src="assets/logos/wide_logo.jpg" alt="CLARITY LAB at UCD logo" loading="lazy">
       </a>
-      <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <button class="menu-button" id="menuButton" type="button" aria-expanded="false"
+        aria-controls="site-nav">Menu</button>
       <nav class="nav" id="site-nav" aria-label="Primary navigation">
         <a href="#research">Research</a>
         <a href="#people">People</a>
@@ -467,15 +924,20 @@
         <div>
           <p class="eyebrow">Integrative Microbiology, Multi-Omics & Applied Bioinformatics</p>
           <h1>Making microbial systems visible, testable and traceable.</h1>
-          <p class="lead" style="margin: 1.35rem 0 1rem 0;">CLARITY LAB at UCD studies microbial systems that affect food safety, public health, antimicrobial resistance and One Health.</p>
-          <p class="lead" style="margin: 0 0 1.75rem 0;">We combine culture-based microbiology, direct-from-sample sequencing, long-read genomics, multi-omics and reproducible bioinformatics to make complex microbial communities easier to detect, interpret and act on.</p>
+          <p class="lead" style="margin: 1.35rem 0 1rem 0;">CLARITY LAB at UCD studies microbial systems that affect
+            food safety, public health, antimicrobial resistance and One Health.</p>
+          <p class="lead" style="margin: 0 0 1.75rem 0;">We combine culture-based microbiology, direct-from-sample
+            sequencing, long-read genomics, multi-omics and reproducible bioinformatics to make complex microbial
+            communities easier to detect, interpret and act on.</p>
           <div class="buttons">
             <a class="button primary" href="#research">Explore our research</a>
             <a class="button secondary" href="#contact">Contact the lab</a>
           </div>
         </div>
         <div class="hero-card">
-          <img src="assets/hero/hero_diagram.png" alt="Microbial systems diagram representing integrative microbiology, multi-omics and applied bioinformatics at CLARITY LAB" style="width: 100%; height: auto; border-radius: 20px; display: block;" loading="lazy">
+          <img src="assets/hero/hero_diagram.png"
+            alt="Microbial systems diagram representing integrative microbiology, multi-omics and applied bioinformatics at CLARITY LAB"
+            style="width: 100%; height: auto; border-radius: 20px; display: block;" loading="lazy">
         </div>
       </div>
       <div class="support-strip" aria-label="Selected funders, collaborators and project partners">
@@ -485,13 +947,15 @@
             <img src="assets/logos/research_ireland-logo.jpg" alt="Research Ireland logo" loading="lazy">
           </div>
           <div class="funder-logo">
-            <img src="assets/logos/dafm-logo.jpg" alt="DAFM Department of Agriculture, Food and the Marine logo" loading="lazy">
+            <img src="assets/logos/dafm-logo.jpg" alt="DAFM Department of Agriculture, Food and the Marine logo"
+              loading="lazy">
           </div>
           <div class="funder-logo">
             <img src="assets/logos/WHO-logo.jpg" alt="World Health Organization logo" loading="lazy">
           </div>
           <div class="funder-logo">
-            <img src="assets/logos/Teagasc-logo.png" alt="Teagasc Agriculture and Food Development Authority logo" loading="lazy">
+            <img src="assets/logos/Teagasc-logo.png" alt="Teagasc Agriculture and Food Development Authority logo"
+              loading="lazy">
           </div>
         </div>
       </div>
@@ -502,8 +966,11 @@
         <div>
           <p class="eyebrow">Explainer</p>
           <h2>What is microbial dark matter?</h2>
-          <p class="lead">Many microbial systems remain poorly characterised. This includes organisms that are difficult to culture, complex microbiomes, mobile genetic elements, antimicrobial resistance genes and microbial interactions that are not visible using standard approaches.</p>
-          <p>CLARITY LAB investigates these systems by connecting laboratory microbiology with computational analysis.</p>
+          <p class="lead">Many microbial systems remain poorly characterised. This includes organisms that are difficult
+            to culture, complex microbiomes, mobile genetic elements, antimicrobial resistance genes and microbial
+            interactions that are not visible using standard approaches.</p>
+          <p>CLARITY LAB investigates these systems by connecting laboratory microbiology with computational analysis.
+          </p>
           <p style="margin-bottom: 0.5rem;"><strong>Our work asks:</strong></p>
           <ul style="padding-left: 1.5rem; margin: 0; color: var(--slate); line-height: 1.75;">
             <li style="margin-bottom: 0.4rem;">Which microorganisms are present?</li>
@@ -514,7 +981,9 @@
           </ul>
         </div>
         <div class="workflow">
-          <img src="assets/hero/iceberg.jpg" alt="Iceberg metaphor representing microbial dark matter" style="width: 100%; height: auto; border-radius: 20px; display: block; border: 1px solid var(--line-grey);" loading="lazy">
+          <img src="assets/hero/iceberg.jpg" alt="Iceberg metaphor representing microbial dark matter"
+            style="width: 100%; height: auto; border-radius: 20px; display: block; border: 1px solid var(--line-grey);"
+            loading="lazy">
         </div>
       </div>
     </section>
@@ -524,60 +993,82 @@
         <div class="intro">
           <p class="eyebrow">Research</p>
           <h2>Research pillars</h2>
-          <p class="lead">Our work connects microbial discovery, food-system safety, pathogen genomics, antimicrobial resistance and reproducible analysis to generate insight for public health and safer food systems.</p>
+          <p class="lead">Our work connects microbial discovery, food-system safety, pathogen genomics, antimicrobial
+            resistance and reproducible analysis to generate insight for public health and safer food systems.</p>
         </div>
         <div class="cards four">
           <article class="card pillar" style="--accent:var(--ferment-gold)">
             <div class="icon" aria-hidden="true">01</div>
             <h3>Microbial dark matter & model microbiomes</h3>
-            <p>We study hidden and poorly characterised microbial diversity in complex communities. Fermented foods, model microbiomes and environmental systems are used to investigate microbial function, resilience and interaction.</p>
+            <p>We study hidden and poorly characterised microbial diversity in complex communities. Fermented foods,
+              model microbiomes and environmental systems are used to investigate microbial function, resilience and
+              interaction.</p>
           </article>
           <article class="card pillar" style="--accent:var(--culture-green)">
             <div class="icon" aria-hidden="true">02</div>
             <h3>Food safety & microbial ecology</h3>
-            <p>We examine microbial communities across food systems to understand safety, spoilage, persistence and microbial risk.</p>
+            <p>We examine microbial communities across food systems to understand safety, spoilage, persistence and
+              microbial risk.</p>
           </article>
           <article class="card pillar" style="--accent:var(--bio-teal)">
             <div class="icon" aria-hidden="true">03</div>
             <h3>Pathogen genomics, AMR & One Health</h3>
-            <p>We use genome sequencing, metagenomics and bioinformatics to study pathogens, antimicrobial resistance and biological risk across food, animal, human, environmental and built-environment contexts.</p>
+            <p>We use genome sequencing, metagenomics and bioinformatics to study pathogens, antimicrobial resistance
+              and biological risk across food, animal, human, environmental and built-environment contexts.</p>
           </article>
           <article class="card pillar" style="--accent:var(--genome-blue)">
             <div class="icon" aria-hidden="true">04</div>
             <h3>Methods, multi-omics & open bioinformatics</h3>
-            <p>We develop and apply reproducible workflows for microbial genomics, microbiome analysis, long-read sequencing and multi-omics integration.</p>
+            <p>We develop and apply reproducible workflows for microbial genomics, microbiome analysis, long-read
+              sequencing and multi-omics integration.</p>
           </article>
         </div>
         <div style="margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--line-grey);">
-          <h3 style="font-size: 1.8rem; margin-bottom: 2rem; color: var(--deep-marine); text-align: center;">Current research areas</h3>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; max-width: 960px; margin: 0 auto;">
-            <div style="display: flex; align-items: start; gap: 0.75rem; background: var(--pale-grey); padding: 1rem 1.25rem; border-radius: 14px; border: 1px solid var(--line-grey);">
+          <h3 style="font-size: 1.8rem; margin-bottom: 2rem; color: var(--deep-marine); text-align: center;">Current
+            research areas</h3>
+          <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; max-width: 960px; margin: 0 auto;">
+            <div
+              style="display: flex; align-items: start; gap: 0.75rem; background: var(--pale-grey); padding: 1rem 1.25rem; border-radius: 14px; border: 1px solid var(--line-grey);">
               <span style="color: var(--bio-teal); font-weight: bold; font-size: 1.2rem; line-height: 1;">•</span>
-              <span style="color: var(--slate); font-size: 0.98rem; font-weight: 500;">Long-read sequencing for microbial identification and surveillance</span>
+              <span style="color: var(--slate); font-size: 0.98rem; font-weight: 500;">Long-read sequencing for
+                microbial identification and surveillance</span>
             </div>
-            <div style="display: flex; align-items: start; gap: 0.75rem; background: var(--pale-grey); padding: 1rem 1.25rem; border-radius: 14px; border: 1px solid var(--line-grey);">
+            <div
+              style="display: flex; align-items: start; gap: 0.75rem; background: var(--pale-grey); padding: 1rem 1.25rem; border-radius: 14px; border: 1px solid var(--line-grey);">
               <span style="color: var(--bio-teal); font-weight: bold; font-size: 1.2rem; line-height: 1;">•</span>
-              <span style="color: var(--slate); font-size: 0.98rem; font-weight: 500;">Metagenomics for antimicrobial resistance monitoring</span>
+              <span style="color: var(--slate); font-size: 0.98rem; font-weight: 500;">Metagenomics for antimicrobial
+                resistance monitoring</span>
             </div>
-            <div style="display: flex; align-items: start; gap: 0.75rem; background: var(--pale-grey); padding: 1rem 1.25rem; border-radius: 14px; border: 1px solid var(--line-grey);">
+            <div
+              style="display: flex; align-items: start; gap: 0.75rem; background: var(--pale-grey); padding: 1rem 1.25rem; border-radius: 14px; border: 1px solid var(--line-grey);">
               <span style="color: var(--bio-teal); font-weight: bold; font-size: 1.2rem; line-height: 1;">•</span>
-              <span style="color: var(--slate); font-size: 0.98rem; font-weight: 500;">Microbial dark matter in food and environmental systems</span>
+              <span style="color: var(--slate); font-size: 0.98rem; font-weight: 500;">Microbial dark matter in food and
+                environmental systems</span>
             </div>
-            <div style="display: flex; align-items: start; gap: 0.75rem; background: var(--pale-grey); padding: 1rem 1.25rem; border-radius: 14px; border: 1px solid var(--line-grey);">
+            <div
+              style="display: flex; align-items: start; gap: 0.75rem; background: var(--pale-grey); padding: 1rem 1.25rem; border-radius: 14px; border: 1px solid var(--line-grey);">
               <span style="color: var(--bio-teal); font-weight: bold; font-size: 1.2rem; line-height: 1;">•</span>
-              <span style="color: var(--slate); font-size: 0.98rem; font-weight: 500;">Taxonomy-free and AI-supported analysis of microbial communities</span>
+              <span style="color: var(--slate); font-size: 0.98rem; font-weight: 500;">Taxonomy-free and AI-supported
+                analysis of microbial communities</span>
             </div>
-            <div style="display: flex; align-items: start; gap: 0.75rem; background: var(--pale-grey); padding: 1rem 1.25rem; border-radius: 14px; border: 1px solid var(--line-grey);">
+            <div
+              style="display: flex; align-items: start; gap: 0.75rem; background: var(--pale-grey); padding: 1rem 1.25rem; border-radius: 14px; border: 1px solid var(--line-grey);">
               <span style="color: var(--bio-teal); font-weight: bold; font-size: 1.2rem; line-height: 1;">•</span>
-              <span style="color: var(--slate); font-size: 0.98rem; font-weight: 500;">Pathogen genomics and genomic epidemiology</span>
+              <span style="color: var(--slate); font-size: 0.98rem; font-weight: 500;">Pathogen genomics and genomic
+                epidemiology</span>
             </div>
-            <div style="display: flex; align-items: start; gap: 0.75rem; background: var(--pale-grey); padding: 1rem 1.25rem; border-radius: 14px; border: 1px solid var(--line-grey);">
+            <div
+              style="display: flex; align-items: start; gap: 0.75rem; background: var(--pale-grey); padding: 1rem 1.25rem; border-radius: 14px; border: 1px solid var(--line-grey);">
               <span style="color: var(--bio-teal); font-weight: bold; font-size: 1.2rem; line-height: 1;">•</span>
-              <span style="color: var(--slate); font-size: 0.98rem; font-weight: 500;">Fermented foods as model microbial ecosystems</span>
+              <span style="color: var(--slate); font-size: 0.98rem; font-weight: 500;">Fermented foods as model
+                microbial ecosystems</span>
             </div>
-            <div style="display: flex; align-items: start; gap: 0.75rem; background: var(--pale-grey); padding: 1rem 1.25rem; border-radius: 14px; border: 1px solid var(--line-grey);">
+            <div
+              style="display: flex; align-items: start; gap: 0.75rem; background: var(--pale-grey); padding: 1rem 1.25rem; border-radius: 14px; border: 1px solid var(--line-grey);">
               <span style="color: var(--bio-teal); font-weight: bold; font-size: 1.2rem; line-height: 1;">•</span>
-              <span style="color: var(--slate); font-size: 0.98rem; font-weight: 500;">Reproducible bioinformatics workflows for research and training</span>
+              <span style="color: var(--slate); font-size: 0.98rem; font-weight: 500;">Reproducible bioinformatics
+                workflows for research and training</span>
             </div>
           </div>
         </div>
@@ -589,55 +1080,78 @@
         <div class="intro">
           <p class="eyebrow">People & Culture</p>
           <h2>The lab team</h2>
-          <p class="lead">CLARITY LAB at UCD is a collaborative research environment for students, researchers and partners working across microbiology, bioinformatics, food safety and public health.</p>
+          <p class="lead">CLARITY LAB at UCD is a collaborative research environment for students, researchers and
+            partners working across microbiology, bioinformatics, food safety and public health.</p>
         </div>
         <div class="people-grid">
           <article class="card pi-card member">
-            <img class="portrait-photo" style="aspect-ratio: 1 / 1; height: auto;" src="assets/people/Guerrino.jpg" alt="Portrait of Dr Guerrino Macori" loading="lazy">
+            <img class="portrait-photo" style="aspect-ratio: 1 / 1; height: auto;" src="assets/people/Guerrino.jpg"
+              alt="Portrait of Dr Guerrino Macori" loading="lazy">
             <p class="role">Principal Investigator</p>
             <h3>Dr Guerrino Macori</h3>
-            <p class="thesis">Assistant Professor, UCD School of Biology and Environmental Science<br>Principal Investigator, CLARITY LAB at UCD</p>
-            <p>Dr Guerrino Macori leads research in applied bioinformatics, food microbiology, pathogen genomics and microbiome analysis. His work focuses on microbial systems relevant to food safety, public health and One Health.</p>
-            <p>The lab integrates experimental and computational approaches to study microbial communities, biological risk, antimicrobial resistance and the interpretation of complex sequencing data.</p>
-            <p>Guerrino teaches and supervises students in applied bioinformatics, pathogen genomics, food safety and microbiome analysis.</p>
+            <p class="thesis">Assistant Professor, UCD School of Biology and Environmental Science<br>Principal
+              Investigator, CLARITY LAB at UCD</p>
+            <p>Dr Guerrino Macori leads research in applied bioinformatics, food microbiology, pathogen genomics and
+              microbiome analysis. His work focuses on microbial systems relevant to food safety, public health and One
+              Health.</p>
+            <p>The lab integrates experimental and computational approaches to study microbial communities, biological
+              risk, antimicrobial resistance and the interpretation of complex sequencing data.</p>
+            <p>Guerrino teaches and supervises students in applied bioinformatics, pathogen genomics, food safety and
+              microbiome analysis.</p>
             <div class="repo-links">
               <p>Professional Profiles:</p>
               <a href="https://people.ucd.ie/guerrino.macori" target="_blank" rel="noopener">UCD Profile</a>
               <a href="https://orcid.org/0000-0001-5835-8409" target="_blank" rel="noopener">ORCID</a>
               <a href="https://www.linkedin.com/in/guerrinomacori/" target="_blank" rel="noopener">LinkedIn</a>
-              <a href="https://scholar.google.com/citations?hl=en&user=q7H11coAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">Google Scholar</a>
-              <a href="https://www.researchgate.net/profile/Guerrino-Macori" target="_blank" rel="noopener">ResearchGate</a>
+              <a href="https://scholar.google.com/citations?hl=en&user=q7H11coAAAAJ&view_op=list_works&sortby=pubdate"
+                target="_blank" rel="noopener">Google Scholar</a>
+              <a href="https://www.researchgate.net/profile/Guerrino-Macori" target="_blank"
+                rel="noopener">ResearchGate</a>
             </div>
-            <p class="outside"><strong>Outside the lab:</strong> Guerrino enjoys travelling, riding his Vespa, exploring new technologies and creative projects, and finding unexpected links between science, nature and everyday life. He enjoys cooking for friends, spending time outdoors and travelling with Geoffrey, his sweet Standard Poodle, who brings plenty of joy and adventure into daily life whenever possible. He is involved in his local community and volunteers with Parkrun, where both Guerrino and Geoffrey also enjoy taking part on Saturday mornings - although usually not for distances much beyond 5 km.</p>
+            <p class="outside"><strong>Outside the lab:</strong> Guerrino enjoys travelling, riding his Vespa, exploring
+              new technologies and creative projects, and finding unexpected links between science, nature and everyday
+              life. He enjoys cooking for friends, spending time outdoors and travelling with Geoffrey, his sweet
+              Standard Poodle, who brings plenty of joy and adventure into daily life whenever possible. He is involved
+              in his local community and volunteers with Parkrun, where both Guerrino and Geoffrey also enjoy taking
+              part on Saturday mornings - although usually not for distances much beyond 5 km.</p>
           </article>
           <div class="cards two">
             <article class="card member">
               <img class="portrait-photo" src="assets/people/Mingwei.jpg" alt="Portrait of Mingwei Hong" loading="lazy">
               <p class="role">PhD Candidate</p>
               <h3>Mingwei Hong</h3>
-              <p class="thesis">Computational Reconstruction of Synthetic Microbiomes for Predicting Pathogen Dynamics</p>
-              <p>Mingwei explores synthetic microbiomes as controlled model systems for investigating microbial community dynamics and pathogen behaviour.</p>
+              <p class="thesis">Computational Reconstruction of Synthetic Microbiomes for Predicting Pathogen Dynamics
+              </p>
+              <p>Mingwei explores synthetic microbiomes as controlled model systems for investigating microbial
+                community dynamics and pathogen behaviour.</p>
               <div class="repo-links">
                 <p>Professional Profiles:</p>
                 <a href="https://www.linkedin.com/in/mingweihong/" target="_blank" rel="noopener">LinkedIn</a>
-                <a href="https://scholar.google.com/citations?user=VI20VPUAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a>
-                <a href="https://www.researchgate.net/profile/Mingwei-Hong" target="_blank" rel="noopener">ResearchGate</a>
+                <a href="https://scholar.google.com/citations?user=VI20VPUAAAAJ&hl=en&oi=ao" target="_blank"
+                  rel="noopener">Google Scholar</a>
+                <a href="https://www.researchgate.net/profile/Mingwei-Hong" target="_blank"
+                  rel="noopener">ResearchGate</a>
               </div>
             </article>
             <article class="card member">
-              <img class="portrait-photo" src="assets/people/Jacques.jpeg" alt="Portrait of Jacques Olivier" loading="lazy">
+              <img class="portrait-photo" src="assets/people/Jacques.jpeg" alt="Portrait of Jacques Olivier"
+                loading="lazy">
               <p class="role">PhD Candidate</p>
               <h3>Jacques Olivier</h3>
               <p class="thesis">AI-Enhanced Deciphering of Microbial Dark Matter</p>
-              <p>Jacques investigates microbial dark matter to understand how functional traits, particularly antimicrobial resistance, disseminate through complex microbiomes.</p>
+              <p>Jacques investigates microbial dark matter to understand how functional traits, particularly
+                antimicrobial resistance, disseminate through complex microbiomes.</p>
               <div class="repo-links">
                 <p>Professional Profiles:</p>
                 <a href="https://orcid.org/0009-0009-4114-0740" target="_blank" rel="noopener">ORCID</a>
                 <a href="https://www.linkedin.com/in/jacqueswolivier/" target="_blank" rel="noopener">LinkedIn</a>
                 <a href="https://github.com/Jacques-does-science" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://www.researchgate.net/profile/Jacques_Olivier2" target="_blank" rel="noopener">ResearchGate</a>
+                <a href="https://www.researchgate.net/profile/Jacques_Olivier2" target="_blank"
+                  rel="noopener">ResearchGate</a>
               </div>
-              <p class="outside"><strong>Outside the lab:</strong> Jacques enjoys cooking, home fermentation and collecting houseplants, with a long-term goal of making the office just slightly more botanical. He also likes exploring Ireland, especially places with good scenery, good food or both.</p>
+              <p class="outside"><strong>Outside the lab:</strong> Jacques enjoys cooking, home fermentation and
+                collecting houseplants, with a long-term goal of making the office just slightly more botanical. He also
+                likes exploring Ireland, especially places with good scenery, good food or both.</p>
             </article>
             <article class="card member">
               <img class="portrait-photo" src="assets/people/Atefeh.jpeg" alt="Portrait of Atefeh Asadi" loading="lazy">
@@ -645,14 +1159,19 @@
               <p class="affiliation-line">Tallinn University of Technology, Estonia</p>
               <h3>Atefeh Asadi</h3>
               <p class="thesis">Psychrotrophic bacteria in food spoilage and safety</p>
-              <p>My research focuses on applying advanced sequencing and multi-omics approaches, including full-length 16S rRNA and ITS sequencing, whole-genome sequencing, and shotgun metagenomics, to investigate microbial succession and the functional adaptation of spoilage-associated microorganisms in ready-to-eat foods.</p>
+              <p>My research focuses on applying advanced sequencing and multi-omics approaches, including full-length
+                16S rRNA and ITS sequencing, whole-genome sequencing, and shotgun metagenomics, to investigate microbial
+                succession and the functional adaptation of spoilage-associated microorganisms in ready-to-eat foods.
+              </p>
               <div class="repo-links">
                 <p>Professional Profiles:</p>
                 <a href="https://orcid.org/0009-0008-0306-6992" target="_blank" rel="noopener">ORCID</a>
                 <a href="https://www.linkedin.com/in/atefeh-asadi/" target="_blank" rel="noopener">LinkedIn</a>
-                <a href="https://scholar.google.com/citations?user=Q0rNIKMAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+                <a href="https://scholar.google.com/citations?user=Q0rNIKMAAAAJ&hl=en" target="_blank"
+                  rel="noopener">Google Scholar</a>
               </div>
-              <p class="outside"><strong>Outside the lab:</strong> I enjoy cooking and baking so much that, if I had another chance, I would probably become a baker instead of a microbiologist.</p>
+              <p class="outside"><strong>Outside the lab:</strong> I enjoy cooking and baking so much that, if I had
+                another chance, I would probably become a baker instead of a microbiologist.</p>
             </article>
             <article class="card member">
               <img class="portrait-photo" src="assets/people/Sara.jpg" alt="Portrait of Sara Benetti" loading="lazy">
@@ -662,11 +1181,16 @@
             </article>
           </div>
         </div>
-        <p class="notice" style="margin-top:1.3rem;">For funded PhD, postdoctoral and research staff opportunities, please follow official UCD recruitment channels and announcements shared by the PI or School. Academic collaboration and project enquiries are welcome by email.</p>
+        <p class="notice" style="margin-top:1.3rem;">For funded PhD, postdoctoral and research staff opportunities,
+          please follow official UCD recruitment channels and announcements shared by the PI or School. Academic
+          collaboration and project enquiries are welcome by email.</p>
         <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--line-grey);">
           <span class="eyebrow" style="font-size: 0.8rem; margin-bottom: 0.5rem; display: block;">Alumni</span>
-          <strong style="color: var(--deep-marine); display: block; margin-bottom: 0.25rem; font-size: 1.05rem;">Alumni profiles coming soon</strong>
-          <p style="margin: 0; color: var(--slate); font-size: 0.95rem;">Former CLARITY LAB members have contributed to research and training across microbiology, bioinformatics, food safety and One Health. Profiles are currently being compiled and will be added once details are confirmed.</p>
+          <strong style="color: var(--deep-marine); display: block; margin-bottom: 0.25rem; font-size: 1.05rem;">Alumni
+            profiles coming soon</strong>
+          <p style="margin: 0; color: var(--slate); font-size: 0.95rem;">Former CLARITY LAB members have contributed to
+            research and training across microbiology, bioinformatics, food safety and One Health. Profiles are
+            currently being compiled and will be added once details are confirmed.</p>
         </div>
       </div>
     </section>
@@ -676,11 +1200,14 @@
         <div class="intro">
           <p class="eyebrow">Selected Outputs</p>
           <h2>Curated publications and project outputs</h2>
-          <p class="lead">This section highlights selected publications, educational resources and research outputs from the lab. A small curated set will be added here, with links to maintained external profiles for a complete publication record.</p>
+          <p class="lead">This section highlights selected publications, educational resources and research outputs from
+            the lab. A small curated set will be added here, with links to maintained external profiles for a complete
+            publication record.</p>
         </div>
         <div class="card" style="border-left: 5px solid var(--bio-teal); padding: 2rem;">
           <h3 style="margin-top: 0; margin-bottom: 0.5rem;">Selected outputs coming soon</h3>
-          <p style="margin: 0; color: var(--slate);">A curated set of publications, research outputs and educational resources will be added here once the final spotlight selection is confirmed.</p>
+          <p style="margin: 0; color: var(--slate);">A curated set of publications, research outputs and educational
+            resources will be added here once the final spotlight selection is confirmed.</p>
         </div>
       </div>
     </section>
@@ -690,20 +1217,32 @@
         <div class="intro">
           <p class="eyebrow">Lab Life</p>
           <h2>Research in practice</h2>
-          <p class="lead">A snapshot of CLARITY LAB at UCD across research meetings, conferences, teaching, outreach, collaboration and everyday scientific work.</p>
+          <p class="lead">A snapshot of CLARITY LAB at UCD across research meetings, conferences, teaching, outreach,
+            collaboration and everyday scientific work.</p>
         </div>
         <div class="gallery-grid">
-          <img src="assets/gallery/guerrino_at_stellenbosch.jpeg" class="gallery-item" loading="lazy" alt="Dr Guerrino Macori presenting at Stellenbosch University">
-          <img src="assets/gallery/guerrino_fems.jpeg" class="gallery-item" loading="lazy" alt="Dr Guerrino Macori attending the FEMS conference">
-          <img src="assets/gallery/guerrino_foodmicro.jpeg" class="gallery-item" loading="lazy" alt="Dr Guerrino Macori presenting at the FoodMicro conference">
-          <img src="assets/gallery/guerrino_outreach.jpg" class="gallery-item" loading="lazy" alt="Dr Guerrino Macori delivering a scientific outreach presentation">
-          <img src="assets/gallery/guerrino_sara.jpeg" class="gallery-item" loading="lazy" alt="Dr Guerrino Macori and Sara Benetti in the lab environment">
-          <img src="assets/gallery/jacques_athlone_poster.jpg" class="gallery-item" loading="lazy" alt="Jacques Olivier presenting his research poster at Microbiology Society Ireland conference">
-          <img src="assets/gallery/jacques_presenting.jpeg" class="gallery-item" loading="lazy" alt="Jacques Olivier giving a presentation on microbial systems">
-          <img src="assets/gallery/jacques_prize.jpeg" class="gallery-item" loading="lazy" alt="Jacques Olivier receiving a research excellence prize">
-          <img src="assets/gallery/mingwei_athlone_poster.jpg" class="gallery-item" loading="lazy" alt="Mingwei Hong presenting her research poster at Microbiology Society Ireland conference">
-          <img src="assets/gallery/ucd_collegues.jpeg" class="gallery-item" loading="lazy" alt="Dr Guerrino Macori and research colleagues at University College Dublin">
-          <img src="assets/gallery/unconventional_lab_photo.png" class="gallery-item" loading="lazy" alt="CLARITY LAB team group photo in the laboratory">
+          <img src="assets/gallery/guerrino_at_stellenbosch.jpeg" class="gallery-item" loading="lazy"
+            alt="Dr Guerrino Macori presenting at Stellenbosch University">
+          <img src="assets/gallery/guerrino_fems.jpeg" class="gallery-item" loading="lazy"
+            alt="Dr Guerrino Macori attending the FEMS conference">
+          <img src="assets/gallery/guerrino_foodmicro.jpeg" class="gallery-item" loading="lazy"
+            alt="Dr Guerrino Macori presenting at the FoodMicro conference">
+          <img src="assets/gallery/guerrino_outreach.jpg" class="gallery-item" loading="lazy"
+            alt="Dr Guerrino Macori delivering a scientific outreach presentation">
+          <img src="assets/gallery/guerrino_sara.jpeg" class="gallery-item" loading="lazy"
+            alt="Dr Guerrino Macori and Sara Benetti in the lab environment">
+          <img src="assets/gallery/jacques_athlone_poster.jpg" class="gallery-item" loading="lazy"
+            alt="Jacques Olivier presenting his research poster at Microbiology Society Ireland conference">
+          <img src="assets/gallery/jacques_presenting.jpeg" class="gallery-item" loading="lazy"
+            alt="Jacques Olivier giving a presentation on microbial systems">
+          <img src="assets/gallery/jacques_prize.jpeg" class="gallery-item" loading="lazy"
+            alt="Jacques Olivier receiving a research excellence prize">
+          <img src="assets/gallery/mingwei_athlone_poster.jpg" class="gallery-item" loading="lazy"
+            alt="Mingwei Hong presenting her research poster at Microbiology Society Ireland conference">
+          <img src="assets/gallery/ucd_collegues.jpeg" class="gallery-item" loading="lazy"
+            alt="Dr Guerrino Macori and research colleagues at University College Dublin">
+          <img src="assets/gallery/unconventional_lab_photo.png" class="gallery-item" loading="lazy"
+            alt="CLARITY LAB team group photo in the laboratory">
         </div>
       </div>
     </section>
@@ -713,18 +1252,25 @@
         <div>
           <img class="footer-logo" src="assets/logos/wide_logo.jpg" alt="CLARITY LAB at UCD logo" loading="lazy">
           <h2 style="color:#fff">Contact and collaboration</h2>
-          <p>We collaborate with academic, clinical, public-health, food-sector and computational partners on projects involving microbiology, sequencing, microbial ecology, genomic epidemiology, antimicrobial resistance and food-system safety.</p>
+          <p>We collaborate with academic, clinical, public-health, food-sector and computational partners on projects
+            involving microbiology, sequencing, microbial ecology, genomic epidemiology, antimicrobial resistance and
+            food-system safety.</p>
           <div class="buttons">
             <a class="button primary" href="mailto:guerrino.macori@ucd.ie">Email the lab</a>
           </div>
         </div>
         <div>
           <h3 style="color:#fff">CLARITY LAB at UCD</h3>
-          <p><strong>Dr Guerrino Macori</strong><br>Assistant Professor<br>UCD School of Biology and Environmental Science</p>
+          <p><strong>Dr Guerrino Macori</strong><br>Assistant Professor<br>UCD School of Biology and Environmental
+            Science</p>
           <p>Affiliations: UCD Conway Institute, UCD Centre for Food Safety, and UCD Institute of Food and Health.</p>
           <p>University College Dublin<br>Belfield, Dublin 4, Ireland</p>
           <p><a href="mailto:guerrino.macori@ucd.ie">guerrino.macori@ucd.ie</a></p>
-          <p><a href="https://people.ucd.ie/guerrino.macori" target="_blank" rel="noopener">UCD Profile</a> · <a href="https://orcid.org/0000-0001-5835-8409" target="_blank" rel="noopener">ORCID</a> · <a href="https://scholar.google.com/citations?user=q7H11coAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a> · <a href="https://www.researchgate.net/profile/Guerrino-Macori" target="_blank" rel="noopener">ResearchGate</a></p>
+          <p><a href="https://people.ucd.ie/guerrino.macori" target="_blank" rel="noopener">UCD Profile</a> · <a
+              href="https://orcid.org/0000-0001-5835-8409" target="_blank" rel="noopener">ORCID</a> · <a
+              href="https://scholar.google.com/citations?user=q7H11coAAAAJ&hl=en&oi=ao" target="_blank"
+              rel="noopener">Google Scholar</a> · <a href="https://www.researchgate.net/profile/Guerrino-Macori"
+              target="_blank" rel="noopener">ResearchGate</a></p>
         </div>
       </div>
       <div class="footer-bottom">
@@ -752,8 +1298,7 @@
   </script>
 
   <!-- GoatCounter analytics -->
-  <script data-goatcounter="https://clarity.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+  <script data-goatcounter="https://clarity.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
   <!-- Lightbox -->
   <div id="gallery-lightbox" class="lightbox">
@@ -766,9 +1311,9 @@
       const lightbox = document.getElementById("gallery-lightbox");
       const lightboxImg = document.getElementById("lightbox-img");
       const closeBtn = document.getElementById("lightbox-close");
-      
+
       const galleryImages = document.querySelectorAll(".gallery-item");
-      
+
       galleryImages.forEach(img => {
         img.addEventListener("click", () => {
           lightboxImg.src = img.src;
@@ -776,17 +1321,17 @@
           lightbox.classList.add("show");
         });
       });
-      
+
       closeBtn.addEventListener("click", () => {
         lightbox.classList.remove("show");
       });
-      
+
       lightbox.addEventListener("click", (e) => {
         if (e.target === lightbox) {
           lightbox.classList.remove("show");
         }
       });
-      
+
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && lightbox.classList.contains("show")) {
           lightbox.classList.remove("show");
@@ -796,4 +1341,5 @@
   </script>
 
 </body>
+
 </html>
