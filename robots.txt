@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jacques-does-science.github.io/CLARITY/sitemap.xml
