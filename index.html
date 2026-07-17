@@ -930,6 +930,183 @@
       color: var(--bio-teal);
       outline: none;
     }
+
+    /* Outputs Section Tabs */
+    .outputs-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+      border-bottom: 1px solid var(--line-grey);
+      padding-bottom: 1.25rem;
+    }
+    
+    .tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--slate);
+      padding: 0.6rem 1.2rem;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+    
+    .tab-btn:hover {
+      background: var(--lab-mist);
+      color: var(--bio-teal);
+    }
+    
+    .tab-btn.active {
+      background: var(--bio-teal);
+      color: var(--white);
+      box-shadow: 0 4px 12px rgba(0, 124, 122, 0.15);
+    }
+    
+    .tab-panel {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+    
+    .tab-panel.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Output Item Card */
+    .output-item {
+      background: var(--white);
+      border: 1px solid var(--line-grey);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 4px 12px rgba(18, 60, 67, 0.02);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    
+    .output-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      border-color: var(--bio-teal);
+    }
+    
+    .output-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--bio-teal);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .output-item-title {
+      font-size: 1.2rem;
+      color: var(--deep-marine);
+      margin: 0.4rem 0;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+    
+    .output-item-desc {
+      color: var(--slate);
+      font-size: 0.95rem;
+      margin: 0 0 1rem;
+      line-height: 1.6;
+    }
+    
+    .output-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      border-top: 1px solid var(--pale-grey);
+      padding-top: 0.75rem;
+    }
+    
+    .doi-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--slate);
+      background: var(--pale-grey);
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+      border: 1px solid var(--line-grey);
+      font-family: monospace;
+    }
+    
+    .btn-doi {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      background: var(--bio-teal);
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.45rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 750;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    
+    .btn-doi:hover {
+      background: #006866;
+    }
+    
+    /* Policy Section Specific */
+    .policy-card {
+      background: linear-gradient(135deg, var(--white), var(--lab-mist));
+      border: 1px solid var(--line-grey);
+      border-left: 5px solid var(--culture-green);
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+    
+    .policy-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    
+    .stat-box {
+      background: rgba(255, 255, 255, 0.6);
+      padding: 1.25rem 0.75rem;
+      border-radius: 12px;
+      border: 1px dashed var(--line-grey);
+    }
+    
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 850;
+      color: var(--culture-green);
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+    
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--deep-marine);
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
   </style>
 </head>
 
@@ -1258,10 +1435,180 @@
             the lab. A small curated set will be added here, with links to maintained external profiles for a complete
             publication record.</p>
         </div>
-        <div class="card" style="border-left: 5px solid var(--bio-teal); padding: 2rem;">
-          <h3 style="margin-top: 0; margin-bottom: 0.5rem;">Selected outputs coming soon</h3>
-          <p style="margin: 0; color: var(--slate);">A curated set of publications, research outputs and educational
-            resources will be added here once the final spotlight selection is confirmed.</p>
+        <div class="outputs-tabs">
+          <button class="tab-btn active" data-tab="food-systems" type="button">Microbiome & Food Systems</button>
+          <button class="tab-btn" data-tab="pathogen-genomics" type="button">Pathogen Genomics & AMR</button>
+          <button class="tab-btn" data-tab="surveillance" type="button">Genomic Surveillance</button>
+          <button class="tab-btn" data-tab="education" type="button">Education & Training</button>
+          <button class="tab-btn" data-tab="policy-impact" type="button">Policy & Societal Impact</button>
+        </div>
+
+        <!-- 1. Microbiome & Food Systems Panel -->
+        <div class="tab-panel active" id="food-systems">
+          <div class="output-item">
+            <div>
+              <div class="output-meta">Food Research International, 2026</div>
+              <h4 class="output-item-title">Mapping spoilage microbiota in complex food systems: organisms, mechanisms, and omics-based characterisation</h4>
+              <p class="output-item-desc">A comprehensive overview of food-spoilage microorganisms and the genomic, metagenomic and multi-omics approaches used to investigate them.</p>
+            </div>
+            <div class="output-footer">
+              <span class="doi-badge">DOI: 10.1016/j.foodres.2026.119633</span>
+              <a href="https://doi.org/10.1016/j.foodres.2026.119633" target="_blank" rel="noopener" class="btn-doi">View Publication</a>
+            </div>
+          </div>
+          
+          <div class="output-item">
+            <div>
+              <div class="output-meta">Nature Food, 2020</div>
+              <h4 class="output-item-title">Meta-analysis of cheese microbiomes highlights contributions to multiple aspects of quality</h4>
+              <p class="output-item-desc">A large-scale analysis showing how cheese-associated microbial communities influence product quality, sensory characteristics and safety.</p>
+            </div>
+            <div class="output-footer">
+              <span class="doi-badge">DOI: 10.1038/s43016-020-0129-3</span>
+              <a href="https://doi.org/10.1038/s43016-020-0129-3" target="_blank" rel="noopener" class="btn-doi">View Publication</a>
+            </div>
+          </div>
+
+          <div class="output-item">
+            <div>
+              <div class="output-meta">mSystems, 2020</div>
+              <h4 class="output-item-title">Fermented-food metagenomics reveals substrate-associated differences in taxonomy, health-associated traits and antimicrobial-resistance determinants</h4>
+              <p class="output-item-desc">A metagenomic investigation of fermented foods linking microbial community composition with substrate type, functional traits and antimicrobial-resistance genes.</p>
+            </div>
+            <div class="output-footer">
+              <span class="doi-badge">DOI: 10.1128/mSystems.00522-20</span>
+              <a href="https://doi.org/10.1128/mSystems.00522-20" target="_blank" rel="noopener" class="btn-doi">View Publication</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Pathogen Genomics & AMR Panel -->
+        <div class="tab-panel" id="pathogen-genomics">
+          <div class="output-item">
+            <div>
+              <div class="output-meta">Antibiotics, 2021</div>
+              <h4 class="output-item-title">Characterisation of an early mcr-1 resistance gene and plasmidome in pathogenic Escherichia coli under colistin selection</h4>
+              <p class="output-item-desc">A genomic study examining colistin resistance, plasmid diversity and the distribution of the mcr-1 gene across pathogenic E. coli lineages.</p>
+            </div>
+            <div class="output-footer">
+              <span class="doi-badge">DOI: 10.3390/antibiotics10091041</span>
+              <a href="https://doi.org/10.3390/antibiotics10091041" target="_blank" rel="noopener" class="btn-doi">View Publication</a>
+            </div>
+          </div>
+
+          <div class="output-item">
+            <div>
+              <div class="output-meta">IJSEM, 2024</div>
+              <h4 class="output-item-title">Stenotrophomonas riyadhensis sp. nov., isolated from a hospital floor swab</h4>
+              <p class="output-item-desc">The genomic and phenotypic description of a previously uncharacterised bacterial species recovered from a hospital environment.</p>
+            </div>
+            <div class="output-footer">
+              <span class="doi-badge">DOI: 10.1099/ijsem.0.006250</span>
+              <a href="https://doi.org/10.1099/ijsem.0.006250" target="_blank" rel="noopener" class="btn-doi">View Publication</a>
+            </div>
+          </div>
+
+          <div class="output-item">
+            <div>
+              <div class="output-meta">Antibiotics, 2026</div>
+              <h4 class="output-item-title">Genomic epidemiology of foodborne Salmonella in Colombia: emergence of novel resistance-associated plasmids</h4>
+              <p class="output-item-desc">A genomic investigation of historical foodborne Salmonella isolates identifying plasmids carrying metal-resistance and multidrug-resistance clusters.</p>
+            </div>
+            <div class="output-footer">
+              <span class="doi-badge">DOI: 10.3390/antibiotics15050511</span>
+              <a href="https://doi.org/10.3390/antibiotics15050511" target="_blank" rel="noopener" class="btn-doi">View Publication</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Genomic Surveillance Panel -->
+        <div class="tab-panel" id="surveillance">
+          <div class="output-item">
+            <div>
+              <div class="output-meta">Clinical Infectious Diseases, 2021</div>
+              <h4 class="output-item-title">Whole-genome sequencing to track SARS-CoV-2 transmission in nosocomial outbreaks</h4>
+              <p class="output-item-desc">Demonstrated the application of whole-genome sequencing to investigate and reconstruct SARS-CoV-2 transmission within healthcare settings.</p>
+            </div>
+            <div class="output-footer">
+              <span class="doi-badge">DOI: 10.1093/cid/ciaa1433</span>
+              <a href="https://doi.org/10.1093/cid/ciaa1433" target="_blank" rel="noopener" class="btn-doi">View Publication</a>
+            </div>
+          </div>
+
+          <div class="output-item">
+            <div>
+              <div class="output-meta">Emerging Infectious Diseases, 2021</div>
+              <h4 class="output-item-title">Genomic evolution of SARS-CoV-2 in an immunocompromised patient in Ireland</h4>
+              <p class="output-item-desc">A longitudinal genomic analysis of viral evolution during persistent infection in an immunocompromised patient.</p>
+            </div>
+            <div class="output-footer">
+              <span class="doi-badge">DOI: 10.3201/eid2709.211159</span>
+              <a href="https://doi.org/10.3201/eid2709.211159" target="_blank" rel="noopener" class="btn-doi">View Publication</a>
+            </div>
+          </div>
+
+          <div class="output-item">
+            <div>
+              <div class="output-meta">Open Research Europe, 2025</div>
+              <h4 class="output-item-title">Towards a unified approach for bioinformatics, sequencing and data analysis in wastewater surveillance</h4>
+              <p class="output-item-desc">Practical recommendations for improving the standardisation, portability and reproducibility of wastewater genomic-surveillance workflows.</p>
+            </div>
+            <div class="output-footer">
+              <span class="doi-badge">DOI: 10.12688/openreseurope.20934.2</span>
+              <a href="https://doi.org/10.12688/openreseurope.20934.2" target="_blank" rel="noopener" class="btn-doi">View Publication</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Education & Training Panel -->
+        <div class="tab-panel" id="education">
+          <div class="output-item">
+            <div>
+              <div class="output-meta">Journal of Microbiology & Biology Education, 2017</div>
+              <h4 class="output-item-title">Build the Read: a hands-on activity for introducing microbiology students to next-generation DNA sequencing and bioinformatics</h4>
+              <p class="output-item-desc">An interactive educational resource that introduces sequencing concepts and read assembly through a practical classroom activity.</p>
+            </div>
+            <div class="output-footer">
+              <span class="doi-badge">DOI: 10.1128/jmbe.v18i3.1363</span>
+              <a href="https://doi.org/10.1128/jmbe.v18i3.1363" target="_blank" rel="noopener" class="btn-doi">View Publication</a>
+            </div>
+          </div>
+
+          <div class="output-item">
+            <div>
+              <div class="output-meta">IEEE GEM, 2025</div>
+              <h4 class="output-item-title">AVINA: Automated Visual Novel Generation Using Large Language Models from Multiple-Choice Question Inputs</h4>
+              <p class="output-item-desc">An educational technology output exploring the use of generative AI and interactive narratives to support learning and assessment.</p>
+            </div>
+            <div class="output-footer">
+              <span class="doi-badge">DOI: 10.1109/GEM66882.2025.11155579</span>
+              <a href="https://doi.org/10.1109/GEM66882.2025.11155579" target="_blank" rel="noopener" class="btn-doi">View Publication</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Policy & Societal Impact Panel -->
+        <div class="tab-panel" id="policy-impact">
+          <div class="policy-card">
+            <h4 class="output-item-title" style="margin-top:0;">Research informing policy and evidence-based decision-making</h4>
+            <p class="output-item-desc" style="margin-bottom:1.5rem;">Our research outputs are widely integrated into policy frameworks to guide public health and food safety actions. A trackable count shows a robust network of scientific influence across international and local guidelines.</p>
+            
+            <div class="policy-stats">
+              <div class="stat-box">
+                <div class="stat-number">61</div>
+                <div class="stat-label">Policy Documents Citations</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number">36</div>
+                <div class="stat-label">Key Source Papers</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number">513</div>
+                <div class="stat-label">Downstream Citations</div>
+              </div>
+            </div>
+            <p style="margin-top: 1.5rem; margin-bottom: 0; font-size: 0.9rem; color: var(--slate); font-style: italic;">Note: 36 of the citing documents were subsequently cited 513 times across a further 367 policy documents, indicating sustained adoption in food safety, antimicrobial resistance, genomic surveillance, and pandemic preparedness guidelines.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1400,6 +1747,23 @@
         if (e.key === "Escape" && lightbox.classList.contains("show")) {
           lightbox.classList.remove("show");
         }
+      });
+
+      // Tab switcher logic
+      const tabButtons = document.querySelectorAll(".tab-btn");
+      const tabPanels = document.querySelectorAll(".tab-panel");
+
+      tabButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const targetTab = btn.getAttribute("data-tab");
+
+          tabButtons.forEach(b => b.classList.remove("active"));
+          tabPanels.forEach(p => p.classList.remove("active"));
+
+          btn.classList.add("active");
+          const targetEl = document.getElementById(targetTab);
+          if (targetEl) targetEl.classList.add("active");
+        });
       });
     });
   </script>
